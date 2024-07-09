@@ -9,6 +9,8 @@ import androidx.activity.ComponentActivity
 import kotlin.random.Random
 
 class MainActivity : ComponentActivity(R.layout.activity_main) {
+    lateinit var diceImage: ImageView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val rollButton = findViewById<Button?>(R.id.roll_button)
@@ -17,6 +19,7 @@ class MainActivity : ComponentActivity(R.layout.activity_main) {
             Toast.makeText(this, "button clicked", Toast.LENGTH_SHORT).show()
             rollDice()
         }
+        diceImage = findViewById(R.id.dice_image)
     }
 
     private fun rollDice() {
@@ -28,6 +31,6 @@ class MainActivity : ComponentActivity(R.layout.activity_main) {
             4 -> R.drawable.dice_5
             else -> R.drawable.dice_6
         }
-        findViewById<ImageView>(R.id.dice_image).run { setImageResource(drawableResource) }
+        diceImage.setImageResource(drawableResource)
     }
 }
